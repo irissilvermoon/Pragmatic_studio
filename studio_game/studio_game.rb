@@ -1,31 +1,5 @@
-class Player
-
-  attr_accessor :name
-  attr_reader :health
-
-  def initialize(name, health=100)
-    @name = name.capitalize
-    @health = health  
-  end
-
-  def score
-    @name.length + @health
-  end
-
-  def blam
-    @health -= 10
-    puts "#{@name} got blammed!"
-  end
-
-  def w00t
-    @health += 15
-    puts "#{@name} got w00ted!"
-  end
-
-  def to_s
-    "Hello, my name is #{@name} and I have a health of #{@health} and a score of of #{score}"
-  end
-end
+require_relative 'game'
+require_relative 'player'
 
 
 player1 = Player.new("moe")
@@ -36,23 +10,21 @@ player3 = Player.new("Curly", 125)
 
 player4 = Player.new("Shemp", 90)
 
-players = [player1, player2, player3]
-puts "There are #{players.count} players in the game"
+player5 = Player.new("Alvin", 50)
 
-players.each do |player|
-  player.health
-end
 
-players.each do |player|
-  player.blam
-  player.blam
-  player.w00t
-  puts player
-end
+knuckleheads = Game.new("Knuckleheads")
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+knuckleheads.play
 
-players.pop
-players.push(player4)
-puts players
+chipmunks = Game.new("Chipmunks")
+chipmunks.add_player(player3)
+chipmunks.add_player(player4)
+chipmunks.add_player(player5)
+chipmunks.play
+
 
 
 
