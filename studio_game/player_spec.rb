@@ -27,7 +27,6 @@ describe Player do
   end
 
   it "increases health by 15 when w00ted" do
-
     @player.w00t
 
     @player.health.should == @initial_health + 15
@@ -39,4 +38,33 @@ describe Player do
     @player.health.should == @initial_health - 10
   end
 
+  context "created default health" do
+    before do
+      @player = Player.new("larry")
+    end
+
+    it "has a health of 100" do
+      @player.health.should == 100
+    end
+  end
+
+  context "with a health greater than 100" do
+    before do
+      @player = Player.new("larry", 150)
+    end
+
+    it "has a rating of strong if health is 100 or greater" do  
+      @player.should be_strong
+    end
+  end
+
+  context "with a health of 100 or less" do
+    before do
+      @player = Player.new("larry", 75)
+    end
+
+    it "is wimpy if health is equal to or less than 100" do
+      @player.should_not be_strong
+    end
+  end
 end
