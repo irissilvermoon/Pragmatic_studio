@@ -29,14 +29,24 @@ class Player
   def to_s
     "Hello, my name is #{@name} and I have a health of #{@health} and a score of of #{score}"
   end
+
+  def <=>(other)
+    other.score <=> score
+  end
 end
 
 if __FILE__ == $0
   player = Player.new("moe")
+
   puts player.name
   puts player.health
+  
   player.w00t
+  
   puts player.health
+  
   player.blam
+  
   puts player.health
 end
+
