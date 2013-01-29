@@ -20,7 +20,7 @@ knuckleheads.add_player(player3)
 knuckleheads.play(2)
 
 knuckleheads.print_stats
-# knuckleheads.high_scores
+
 
 
 
