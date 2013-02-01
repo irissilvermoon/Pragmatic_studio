@@ -1,5 +1,6 @@
 require_relative 'die'
 require_relative 'player'
+require_relative 'treasure_trove'
 
 module GameTurn
   def self.take_turn(player)
@@ -9,12 +10,16 @@ module GameTurn
     case number_rolled
     when (1..2)
       player.blam
-      puts "#{player} was blammed."
+      puts "#{player.name} was blammed."
     when (3..4)
-      puts "#{player} was skipped."
+      puts "#{player.name} was skipped."
     else 
       player.w00t
-      puts "#{player} was w00ted!"
+      puts "#{player.name} was w00ted!"
     end
+
+    treasure = TreasureTrove.random
+
+    puts "#{player.name} found a #{treasure.name} worth #{treasure.points} points."
   end
 end

@@ -18,16 +18,14 @@ class Player
 
   def blam
     @health -= 10
-    puts "#{@name} got blammed!"
   end
 
   def w00t
     @health += 15
-    puts "#{@name} got w00ted!"
   end
 
   def to_s
-    "Hello, my name is #{@name} and I have a health of #{@health} and a score of of #{score}"
+    "Hello, my name is #{@name} and I have a health of #{@health} and a score of #{score}."
   end
 
   def <=>(other)
