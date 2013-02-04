@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'treasure_trove'
 
 describe Player do
 
@@ -17,7 +18,7 @@ describe Player do
   end
 
   it "has a string representation" do
-    @player.to_s.should == "Hello, my name is Larry and I have a health of 100 and a score of of 105"
+    @player.to_s.should == "Hello, my name is Larry and I have a health of 100 and a score of 105."
   end
 
   it "computes a score as the sum of its health and length of name" do
@@ -80,5 +81,21 @@ describe Player do
     it "is sorted by decreasing score" do
       @players.sort.should == [@player3, @player2, @player1]
     end
+  end
+
+  it "computes points as the sum of all treasure points" do
+    @player.points.should == 0
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    @player.points.should == 50
+
+    @player.found_treasure(Treasure.new(:crowbar, 400))
+
+    @player.points.should == 450
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    @player.points.should == 500
   end
 end
