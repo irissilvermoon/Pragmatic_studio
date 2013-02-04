@@ -24,7 +24,7 @@ class Player
   end
 
   def score
-    @name.length + @health
+    @health + points
   end
 
   def blam
@@ -36,7 +36,7 @@ class Player
   end
 
   def to_s
-    "Hello, my name is #{@name} and I have a health of #{@health} and a score of #{score}."
+    "I'm #{@name} with health = #{@health}, points = #{points}, and score = #{score}."
   end
 
   def <=>(other)
